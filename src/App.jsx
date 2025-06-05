@@ -1,7 +1,11 @@
+import Headers from "./components/Headers";
+import Main from "./components/Main";
+
 function App() {
   return (
     <>
-      <h1>My APP React</h1>
+      <Headers />
+      <Main />
     </>
   );
 }
