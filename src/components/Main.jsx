@@ -8,9 +8,13 @@ import { useNavigate } from "react-router-dom";
 
 export default function Main() {
   const navigate = useNavigate();
-  const { topRatesMovies, fetchTopRatesMovies, fetchTopRatesTv, topRatesTv, search } = useData();
+  const { topRatesMovies, fetchTopRatesMovies, fetchTopRatesTv, topRatesTv, search, setSearch } = useData();
   const [pageMovies, setPageMovies] = useState(1);
   const [pageTv, setPageTv] = useState(1);
+
+  useEffect(() => {
+    setSearch("");
+  }, []);
 
   useEffect(() => {
     if (search.length > 2) {
@@ -34,7 +38,7 @@ export default function Main() {
                 <FontAwesomeIcon className="cursor-pointer" icon={faChevronLeft} />
               </button>
             )}
-            <div className="flex flex-wrap gap-4 justify-center">
+            <div className="flex overflow-auto gap-4 justify-center">
               {topRatesMovies.map((item) => (
                 <CardMoviesTv key={item.id} item={item} />
               ))}
@@ -52,7 +56,7 @@ export default function Main() {
                 <FontAwesomeIcon icon={faChevronLeft} />
               </button>
             )}
-            <div className="flex flex-wrap gap-4 p-2 justify-center">
+            <div className="flex overflow-auto gap-4 p-2 justify-center">
               {topRatesTv.map((item) => (
                 <CardMoviesTv key={item.id} item={item} />
               ))}
