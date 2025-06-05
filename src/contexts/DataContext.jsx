@@ -4,39 +4,44 @@ import axios from "axios";
 export const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
-  const [dataMovies, setDataMovies] = useState([]);
-  const [dataTv, setDataTv] = useState([]);
   const [topRatesMovies, setTopRatesMovies] = useState([]);
   const [topRatesTv, setTopRatesTv] = useState([]);
   const [search, setSearch] = useState("");
+  const [searchedMovies, setSearchedMovies] = useState([]);
+  const [searchedTv, setSearchedTv] = useState([]);
 
-  const fetchTopRatesMovies = () => {
-    const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_API_KEY}`;
+  const fetchTopRatesMovies = (page) => {
+    const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_API_KEY}&page=${page}`;
     axios.get(url).then((res) => {
       setTopRatesMovies(res.data.results);
     });
   };
-  const fetchTopRatesTv = () => {
-    const url = `https://api.themoviedb.org/3/tv/top_rated?api_key=${import.meta.env.VITE_API_KEY}`;
+  const fetchTopRatesTv = (page) => {
+    const url = `https://api.themoviedb.org/3/tv/top_rated?api_key=${import.meta.env.VITE_API_KEY}&page=${page}`;
     axios.get(url).then((res) => {
       setTopRatesTv(res.data.results);
     });
   };
 
-  const fetchSearchData = (search) => {
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${import.meta.env.VITE_API_KEY}&query=${search}`;
-    axios
-      .get(url)
-      .then((res) => {
-        setDataMovies(res.data.results);
-      })
-      .then(() => {
-        axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${import.meta.env.VITE_API_KEY}&query=${search}`).then((res) => {
-          setDataTv(res.data.results);
-        });
-      });
+  const fetchSearchedMovie = (search, page) => {
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${import.meta.env.VITE_API_KEY}&query=${search}&page=${page}`;
+    axios.get(url).then((res) => {
+      setSearchedMovies(res.data.results);
+    });
   };
-  return <DataContext.Provider value={{ dataMovies, dataTv, topRatesMovies, topRatesTv, fetchSearchData, fetchTopRatesMovies, fetchTopRatesTv, search, setSearch }}>{children}</DataContext.Provider>;
+
+  const fetchSearchedTv = (search, page) => {
+    const url = `https://api.themoviedb.org/3/search/tv?api_key=${import.meta.env.VITE_API_KEY}&query=${search}&page=${page}`;
+    axios.get(url).then((res) => {
+      setSearchedTv(res.data.results);
+    });
+  };
+
+  return (
+    <DataContext.Provider value={{ topRatesMovies, topRatesTv, searchedMovies, searchedTv, fetchSearchedMovie, fetchSearchedTv, fetchTopRatesMovies, fetchTopRatesTv, search, setSearch }}>
+      {children}
+    </DataContext.Provider>
+  );
 };
 
 const useData = () => {
