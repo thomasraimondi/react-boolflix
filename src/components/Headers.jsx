@@ -22,8 +22,8 @@ export default function Headers() {
           </div>
           <div className="flex items-center gap-5 text-white">
             <Link to="/">Home</Link>
-            <Link to="/">Serie Tv</Link>
-            <Link to="/">Film</Link>
+            <Link to="/tv">Serie Tv</Link>
+            <Link to="/movie">Film</Link>
             <Link to="/">Giochi</Link>
             <Link to="/">Nuovi e Popolari</Link>
             <Link to="/">La mia lista</Link>
