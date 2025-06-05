@@ -13,8 +13,6 @@ function App() {
         <Routes>
           <Route path="/" element={<DefaultLayout />}>
             <Route index element={<Main />} />
-            <Route path="/movie" element={<Movie />} />
-            <Route path="/tv" element={<TvSeries />} />
           </Route>
         </Routes>
       </BrowserRouter>
