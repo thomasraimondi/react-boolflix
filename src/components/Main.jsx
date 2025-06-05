@@ -25,7 +25,7 @@ export default function Main() {
 
   return (
     <>
-      <div className="flex flex-col gap-4 bg-gray-900">
+      <div className="flex flex-col gap-4 bg-gray-900 grow">
         <div className="container mx-auto w-full py-5">
           <span className="text-2xl font-bold p-2 text-white">Top Rated Film</span>
           <div className="flex gap-2 py-5">

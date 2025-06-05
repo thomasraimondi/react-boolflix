@@ -23,7 +23,7 @@ export default function Search() {
 
   return (
     <>
-      <div className="flex flex-col gap-4 bg-gray-900">
+      <div className="flex flex-col gap-4 bg-gray-900 grow">
         <div className="container mx-auto w-full py-5">
           {/* <span className="text-2xl font-bold p-2 text-white">Film e Serie Tv Trovati</span> */}
           {/* <div className="flex flex-wrap gap-4 p-2 justify-center">
