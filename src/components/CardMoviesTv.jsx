@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
-import clsx from "clsx";
 
 export default function CardMoviesTv({ item }) {
   // Prendo titolo e data a seconda se è film o serie
