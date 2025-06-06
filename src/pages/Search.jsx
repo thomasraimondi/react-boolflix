@@ -1,9 +1,6 @@
 import { useData } from "../contexts/DataContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import CardMoviesTv from "../components/CardMoviesTv";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import ListCard from "../components/ListCard";
 
 export default function Search() {
