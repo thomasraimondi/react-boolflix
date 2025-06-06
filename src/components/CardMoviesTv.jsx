@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
+import { Link } from "react-router-dom";
 
 export default function CardMoviesTv({ item }) {
   // Prendo titolo e data a seconda se è film o serie
@@ -9,17 +10,20 @@ export default function CardMoviesTv({ item }) {
   const overview = item.overview || "Nessuna descrizione disponibile.";
 
   return (
-    <div className="relative flex flex-col gap-2 w-48 rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 text-white group bg-gray-800">
+    <Link
+      to={`/data/${item.title ? "movie" : "tv"}/${item.id}`}
+      className="relative flex flex-col gap-2 min-w-30 rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 text-white group bg-gray-800"
+    >
       {item.poster_path ? (
-        <img className="w-full h-70 object-cover" src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={title} />
+        <img className="w-30 h-50 object-cover" src={`https://image.tmdb.org/t/p/w342${item.poster_path}`} alt={title} />
       ) : (
-        <img className="w-full h-70 object-cover" src="/logo.jpeg" alt={title} />
+        <img className="w-30 h-50 object-cover" src="/logo.jpeg" alt={title} />
       )}
       {/* Overlay per overview in hover */}
-      <div className="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 flex flex-col p-4 transition-opacity duration-300 text-sm text-gray-200 z-10">
-        <span className="text-white">{title}</span>
+      <div className="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 flex flex-col w-30 p-4 transition-opacity duration-300 text-sm text-gray-200 z-10">
+        <h2 className="text-white text-sm font-bold break-words whitespace-normal">{title}</h2>
         <span className="text-white">Overview:</span>
-        <span>{overview.length > 120 ? overview.slice(0, 120) + "..." : overview}</span>
+        {/* <span className="text-white whitespace-normal grow">{overview.length > 50 ? overview.slice(0, 50) + "..." : overview}</span> */}
         <div className="flex items-center gap-2 mt-1">
           <span className="flex">
             {Array.from({ length: Math.round(item.vote_average / 2) }, (_, i) => (
@@ -36,12 +40,6 @@ export default function CardMoviesTv({ item }) {
           <span className="text-sm font-semibold ml-1">{vote}</span>
         </div>
       </div>
-      {/* <div className="flex flex-col gap-1 p-3">
-        <span className="font-bold text-lg truncate" title={title}>
-          {title}
-        </span>
-        <span className="text-xs text-gray-400">{year}</span>
-      </div> */}
-    </div>
+    </Link>
   );
 }
