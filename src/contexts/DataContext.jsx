@@ -101,11 +101,11 @@ const DataProvider = ({ children }) => {
     fetchUpcomingMovies(pageUpcoming);
   };
 
-  const getAllTv = (pageTop, pageNow, pagePopular, pageAiringToday) => {
+  const getAllTv = (pageTop, pageOnTheAir, pagePopular, pageAiringToday) => {
     fetchTopRatesTv(pageTop);
-    fetchOnTheAirTv(pageNow);
+    fetchOnTheAirTv(pageOnTheAir);
     fetchPopularTv(pagePopular);
-    fetchAiringTodayTv(pageUpcoming);
+    fetchAiringTodayTv(pageAiringToday);
   };
 
   return (

@@ -1,11 +1,20 @@
 import { useSearch } from "../../contexts/SearchContext";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function SearchBar() {
-  const { query, setQuery } = useSearch();
+  const { query, setQuery, setCountSearch } = useSearch();
+  const navigate = useNavigate();
 
   const handleSearch = (e) => {
     setQuery(e.target.value);
   };
+
+  useEffect(() => {
+    if (query.length > 2) {
+      navigate("/search");
+    }
+  }, [query]);
 
   return (
     <div className="flex items-center gap-2 p-2">

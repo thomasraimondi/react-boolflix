@@ -16,12 +16,6 @@ export default function Main() {
   }, []);
 
   useEffect(() => {
-    if (query.length > 2) {
-      navigate("/search");
-    }
-  }, [query]);
-
-  useEffect(() => {
     homeData(pageMovies, pageTv);
   }, [pageMovies, pageTv]);
 

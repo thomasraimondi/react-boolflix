@@ -6,14 +6,14 @@ import ListCard from "../components/ListCard";
 
 export default function Search() {
   const { query, searchedDataMovies, searchedDataTv, searchData, searchGenersData, countSearch, setCountSearch } = useSearch();
-  const { genersSelected } = useData();
+  const { genersSelected, setWelcome } = useData();
   const navigate = useNavigate();
   const [pageMoviesSearch, setPageMoviesSearch] = useState(1);
   const [pageTvSearch, setPageTvSearch] = useState(1);
 
   useEffect(() => {
     setCountSearch(countSearch + 1);
-    console.log(countSearch);
+    setWelcome("Boolflix");
   }, []);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function Search() {
     } else if (genersSelected.length > 0) {
       searchGenersData(genersSelected, pageMoviesSearch, pageTvSearch);
     } else {
-      navigate("/");
+      navigate(-1);
     }
   }, [pageMoviesSearch, pageTvSearch, query, genersSelected]);
 

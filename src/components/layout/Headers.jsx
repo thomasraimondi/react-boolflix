@@ -33,7 +33,7 @@ export default function Headers() {
         </div>
       </div>
       <div className="jumbotron w-full mt-20 relative h-50 bg-red-700">
-        {countSearch === 0 && <h1 className="text-white text-4xl font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">{welcome}</h1>}
+        <h1 className="text-white text-4xl font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">{welcome}</h1>
       </div>
     </header>
   );
