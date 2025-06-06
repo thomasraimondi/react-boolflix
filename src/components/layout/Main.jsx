@@ -1,8 +1,7 @@
-import { useData } from "../contexts/DataContext";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useData } from "../../contexts/DataContext";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ListCard from "./ListCard";
+import ListCard from "../ListCard";
 
 export default function Main() {
   const navigate = useNavigate();

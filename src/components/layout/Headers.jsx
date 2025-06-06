@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useData } from "../contexts/DataContext";
+import { useData } from "../../contexts/DataContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 
