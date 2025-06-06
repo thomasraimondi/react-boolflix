@@ -1,4 +1,4 @@
-import Main from "./components/Main";
+import Main from "./components/layout/Main";
 import { DataProvider } from "./contexts/DataContext";
 import DefaultLayout from "./layout/DefaultLayout";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
