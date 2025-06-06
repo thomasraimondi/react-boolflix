@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import CardMoviesTv from "./CardMoviesTv";
-import { useRef, useEffect } from "react";
 
 export default function ListCard({ searchedData, page, setPage }) {
   return (
@@ -16,9 +15,13 @@ export default function ListCard({ searchedData, page, setPage }) {
         </button>
       </div>
       <div className="flex gap-4 p-2 overflow-x-auto whitespace-nowrap scrollbar-hide items-center">
-        {searchedData.map((item) => (
-          <CardMoviesTv key={item.id} item={item} />
-        ))}
+        {searchedData.length > 0 ? (
+          searchedData.map((item) => <CardMoviesTv key={item.id} item={item} />)
+        ) : (
+          <div className="flex justify-center items-center h-full">
+            <span className="text-white text-2xl font-bold">Nessun risultato trovato</span>
+          </div>
+        )}
       </div>
       <div className="flex gap-2 py-5">
         <button
