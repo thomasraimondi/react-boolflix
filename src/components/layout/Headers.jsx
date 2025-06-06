@@ -5,9 +5,11 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 import NavBar from "./NavBar";
 import SearchBar from "../ui/SearchBar";
 import { useEffect } from "react";
+import { useSearch } from "../../contexts/SearchContext";
 
 export default function Headers() {
-  const { welcome, countSearch } = useData();
+  const { welcome } = useData();
+  const { countSearch } = useSearch();
   useEffect(() => {
     console.log(countSearch);
   }, [countSearch]);
@@ -30,8 +32,7 @@ export default function Headers() {
           </Link>
         </div>
       </div>
-      <div className="jumbotron w-full mt-20 relative">
-        <img className="w-full h-50 object-cover" src="../src/assets/img/jumbotron.png" alt="jumbotron" />
+      <div className="jumbotron w-full mt-20 relative h-50 bg-red-700">
         {countSearch === 0 && <h1 className="text-white text-4xl font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">{welcome}</h1>}
       </div>
     </header>

@@ -8,7 +8,13 @@ const DataProvider = ({ children }) => {
   const [topRatesTv, setTopRatesTv] = useState([]);
   const [geners, setGeners] = useState([]);
   const [genersSelected, setGenersSelected] = useState("");
-  const [welcome, setWelcome] = useState("Benvenuto");
+  const [welcome, setWelcome] = useState("Benvenuto in Boolflix");
+  const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
+  const [popularMovies, setPopularMovies] = useState([]);
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
+  const [popularTv, setPopularTv] = useState([]);
+  const [onTheAirTv, setOnTheAirTv] = useState([]);
+  const [airingTodayTv, setAiringTodayTv] = useState([]);
 
   const fetchTopRatesMovies = (page) => {
     const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_API_KEY}&page=${page}`;
@@ -17,10 +23,52 @@ const DataProvider = ({ children }) => {
     });
   };
 
+  const fetchNowPlayingMovies = (page) => {
+    const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_API_KEY}&page=${page}`;
+    axios.get(url).then((res) => {
+      setNowPlayingMovies(res.data.results);
+    });
+  };
+
+  const fetchPopularMovies = (page) => {
+    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_API_KEY}&page=${page}`;
+    axios.get(url).then((res) => {
+      setPopularMovies(res.data.results);
+    });
+  };
+
+  const fetchUpcomingMovies = (page) => {
+    const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${import.meta.env.VITE_API_KEY}&page=${page}`;
+    axios.get(url).then((res) => {
+      setUpcomingMovies(res.data.results);
+    });
+  };
+
   const fetchTopRatesTv = (page) => {
     const url = `https://api.themoviedb.org/3/tv/top_rated?api_key=${import.meta.env.VITE_API_KEY}&page=${page}`;
     axios.get(url).then((res) => {
       setTopRatesTv(res.data.results);
+    });
+  };
+
+  const fetchOnTheAirTv = (page) => {
+    const url = `https://api.themoviedb.org/3/tv/on_the_air?api_key=${import.meta.env.VITE_API_KEY}&page=${page}`;
+    axios.get(url).then((res) => {
+      setOnTheAirTv(res.data.results);
+    });
+  };
+
+  const fetchPopularTv = (page) => {
+    const url = `https://api.themoviedb.org/3/tv/popular?api_key=${import.meta.env.VITE_API_KEY}&page=${page}`;
+    axios.get(url).then((res) => {
+      setPopularTv(res.data.results);
+    });
+  };
+
+  const fetchAiringTodayTv = (page) => {
+    const url = `https://api.themoviedb.org/3/tv/airing_today?api_key=${import.meta.env.VITE_API_KEY}&page=${page}`;
+    axios.get(url).then((res) => {
+      setAiringTodayTv(res.data.results);
     });
   };
 
@@ -46,6 +94,20 @@ const DataProvider = ({ children }) => {
     fetchGeners();
   };
 
+  const getAllMovies = (pageTop, pageNow, pagePopular, pageUpcoming) => {
+    fetchTopRatesMovies(pageTop);
+    fetchNowPlayingMovies(pageNow);
+    fetchPopularMovies(pagePopular);
+    fetchUpcomingMovies(pageUpcoming);
+  };
+
+  const getAllTv = (pageTop, pageNow, pagePopular, pageAiringToday) => {
+    fetchTopRatesTv(pageTop);
+    fetchOnTheAirTv(pageNow);
+    fetchPopularTv(pagePopular);
+    fetchAiringTodayTv(pageUpcoming);
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -58,6 +120,14 @@ const DataProvider = ({ children }) => {
         setGenersSelected,
         welcome,
         setWelcome,
+        nowPlayingMovies,
+        popularMovies,
+        upcomingMovies,
+        popularTv,
+        onTheAirTv,
+        airingTodayTv,
+        getAllMovies,
+        getAllTv,
       }}
     >
       {children}
