@@ -5,6 +5,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Search from "./pages/Search";
 import Tv from "./pages/tv";
 import Movie from "./pages/Movie";
+import MovieDetails from "./pages/MovieDetails";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/search" element={<Search />} />
             <Route path="/tv" element={<Tv />} />
             <Route path="/movie" element={<Movie />} />
+            <Route path="/data/:type/:id" element={<MovieDetails />} />
           </Route>
         </Routes>
       </BrowserRouter>
