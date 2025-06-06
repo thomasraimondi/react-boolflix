@@ -3,14 +3,9 @@ import { useData } from "../../contexts/DataContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import NavBar from "./NavBar";
+import SearchBar from "../ui/SearchBar";
 
 export default function Headers() {
-  const { search, setSearch } = useData();
-
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-  };
-
   return (
     <header className="">
       <div className="flex justify-between items-center  bg-gray-900 p-2 w-full fixed top-0 left-0 right-0 z-50 h-20">
@@ -24,9 +19,7 @@ export default function Headers() {
           <NavBar />
         </div>
         <div className="flex items-center gap-5 text-white pr-5">
-          <div className="flex items-center gap-2 p-2">
-            <input className=" p-2 border-2 border-gray-300" type="text" placeholder="Cerca un film" value={search} onChange={handleSearch} />
-          </div>
+          <SearchBar />
           <Link to="/">
             <FontAwesomeIcon icon={faUser} />
           </Link>
