@@ -1,11 +1,13 @@
+import { useSearch } from "../contexts/SearchContext";
 import { useData } from "../contexts/DataContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ListCard from "../components/ListCard";
 
 export default function Search() {
+  const { query, searchedDataMovies, searchedDataTv, searchData, searchGenersData, countSearch, setCountSearch } = useSearch();
+  const { genersSelected } = useData();
   const navigate = useNavigate();
-  const { query, searchData, searchedDataMovies, searchedDataTv, genersSelected, searchGenersData, countSearch, setCountSearch } = useData();
   const [pageMoviesSearch, setPageMoviesSearch] = useState(1);
   const [pageTvSearch, setPageTvSearch] = useState(1);
 

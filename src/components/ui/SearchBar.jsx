@@ -1,7 +1,7 @@
-import { useData } from "../../contexts/DataContext";
+import { useSearch } from "../../contexts/SearchContext";
 
 export default function SearchBar() {
-  const { query, setQuery } = useData();
+  const { query, setQuery } = useSearch();
 
   const handleSearch = (e) => {
     setQuery(e.target.value);
