@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useData } from "../../contexts/DataContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
+import NavBar from "./NavBar";
 
 export default function Headers() {
   const { search, setSearch } = useData();
@@ -20,15 +21,7 @@ export default function Headers() {
               Boolflix
             </Link>
           </div>
-          <div className="flex items-center gap-5 text-white">
-            <Link to="/">Home</Link>
-            <Link to="/tv">Serie Tv</Link>
-            <Link to="/movie">Film</Link>
-            <Link to="/">Giochi</Link>
-            <Link to="/">Nuovi e Popolari</Link>
-            <Link to="/">La mia lista</Link>
-            <Link to="/">Sfoglia per lingua</Link>
-          </div>
+          <NavBar />
         </div>
         <div className="flex items-center gap-5 text-white pr-5">
           <div className="flex items-center gap-2 p-2">
