@@ -4,8 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import NavBar from "./NavBar";
 import SearchBar from "../ui/SearchBar";
+import { useEffect } from "react";
 
 export default function Headers() {
+  const { welcome, countSearch } = useData();
+  useEffect(() => {
+    console.log(countSearch);
+  }, [countSearch]);
   return (
     <header className="">
       <div className="flex justify-between items-center  bg-gray-900 p-2 w-full fixed top-0 left-0 right-0 z-50 h-20">
@@ -25,8 +30,9 @@ export default function Headers() {
           </Link>
         </div>
       </div>
-      <div className="jumbotron w-full mt-20">
+      <div className="jumbotron w-full mt-20 relative">
         <img className="w-full h-50 object-cover" src="../src/assets/img/jumbotron.png" alt="jumbotron" />
+        {countSearch === 0 && <h1 className="text-white text-4xl font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">{welcome}</h1>}
       </div>
     </header>
   );
