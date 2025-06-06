@@ -18,19 +18,19 @@ export default function tv() {
     <>
       <div className="flex flex-col gap-4 bg-gray-900 grow">
         <div className="container mx-auto w-full py-5 bg-gray-900">
-          <span className="text-2xl font-bold p-2 text-white">Top Rated Tv</span>
+          <span className="text-2xl font-bold p-2 text-white">Top Rated</span>
           <div>
             <ListCard searchedData={topRatesTv} page={pageTop} setPage={setPageTop} />
           </div>
-          <span className="text-2xl font-bold p-2 text-white">On The Air Tv</span>
+          <span className="text-2xl font-bold p-2 text-white">On The Air</span>
           <div>
             <ListCard searchedData={onTheAirTv} page={pageOnTheAir} setPage={setPageOnTheAir} />
           </div>
-          <span className="text-2xl font-bold p-2 text-white">Popular Tv</span>
+          <span className="text-2xl font-bold p-2 text-white">Popular</span>
           <div>
             <ListCard searchedData={popularTv} page={pagePopular} setPage={setPagePopular} />
           </div>
-          <span className="text-2xl font-bold p-2 text-white">Airing Today Tv</span>
+          <span className="text-2xl font-bold p-2 text-white">Airing Today</span>
           <div>
             <ListCard searchedData={airingTodayTv} page={pageAiringToday} setPage={setPageAiringToday} />
           </div>

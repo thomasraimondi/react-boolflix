@@ -36,13 +36,13 @@ export default function Search() {
         <div className="container mx-auto w-full py-5">
           {searchedDataMovies.length > 0 && (
             <>
-              <span className="text-2xl font-bold p-2 text-white"> Film Trovati</span>
+              <span className="text-2xl font-bold p-2 text-white"> Film</span>
               <ListCard searchedData={searchedDataMovies} page={pageMoviesSearch} setPage={setPageMoviesSearch} />
             </>
           )}
           {searchedDataTv.length > 0 && (
             <>
-              <span className="text-2xl font-bold p-2 text-white"> Serie Tv Trovate</span>
+              <span className="text-2xl font-bold p-2 text-white"> Serie Tv</span>
               <ListCard searchedData={searchedDataTv} page={pageTvSearch} setPage={setPageTvSearch} />
             </>
           )}
