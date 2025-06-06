@@ -11,7 +11,7 @@ export default function CardMoviesTv({ item }) {
 
   return (
     <Link
-      to={`/data/${item.title ? "movie" : "tv"}/${item.id}`}
+      to={`/${item.type}/${item.id}`}
       className="relative flex flex-col gap-2 min-w-30 rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 text-white group bg-gray-800"
     >
       {item.poster_path ? (

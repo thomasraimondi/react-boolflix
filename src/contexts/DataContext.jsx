@@ -19,56 +19,56 @@ const DataProvider = ({ children }) => {
   const fetchTopRatesMovies = (page) => {
     const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_API_KEY}&page=${page}`;
     axios.get(url).then((res) => {
-      setTopRatesMovies(res.data.results);
+      setTopRatesMovies(res.data.results.map((movie) => ({ ...movie, type: "movie" })));
     });
   };
 
   const fetchNowPlayingMovies = (page) => {
     const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_API_KEY}&page=${page}`;
     axios.get(url).then((res) => {
-      setNowPlayingMovies(res.data.results);
+      setNowPlayingMovies(res.data.results.map((movie) => ({ ...movie, type: "movie" })));
     });
   };
 
   const fetchPopularMovies = (page) => {
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_API_KEY}&page=${page}`;
     axios.get(url).then((res) => {
-      setPopularMovies(res.data.results);
+      setPopularMovies(res.data.results.map((movie) => ({ ...movie, type: "movie" })));
     });
   };
 
   const fetchUpcomingMovies = (page) => {
     const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${import.meta.env.VITE_API_KEY}&page=${page}`;
     axios.get(url).then((res) => {
-      setUpcomingMovies(res.data.results);
+      setUpcomingMovies(res.data.results.map((movie) => ({ ...movie, type: "movie" })));
     });
   };
 
   const fetchTopRatesTv = (page) => {
     const url = `https://api.themoviedb.org/3/tv/top_rated?api_key=${import.meta.env.VITE_API_KEY}&page=${page}`;
     axios.get(url).then((res) => {
-      setTopRatesTv(res.data.results);
+      setTopRatesTv(res.data.results.map((tv) => ({ ...tv, type: "tv" })));
     });
   };
 
   const fetchOnTheAirTv = (page) => {
     const url = `https://api.themoviedb.org/3/tv/on_the_air?api_key=${import.meta.env.VITE_API_KEY}&page=${page}`;
     axios.get(url).then((res) => {
-      setOnTheAirTv(res.data.results);
+      setOnTheAirTv(res.data.results.map((tv) => ({ ...tv, type: "tv" })));
     });
   };
 
   const fetchPopularTv = (page) => {
     const url = `https://api.themoviedb.org/3/tv/popular?api_key=${import.meta.env.VITE_API_KEY}&page=${page}`;
     axios.get(url).then((res) => {
-      setPopularTv(res.data.results);
+      setPopularTv(res.data.results.map((tv) => ({ ...tv, type: "tv" })));
     });
   };
 
   const fetchAiringTodayTv = (page) => {
     const url = `https://api.themoviedb.org/3/tv/airing_today?api_key=${import.meta.env.VITE_API_KEY}&page=${page}`;
     axios.get(url).then((res) => {
-      setAiringTodayTv(res.data.results);
+      setAiringTodayTv(res.data.results.map((tv) => ({ ...tv, type: "tv" })));
     });
   };
 

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 export default function SearchBar() {
-  const { query, setQuery, setCountSearch } = useSearch();
+  const { query, setQuery } = useSearch();
   const navigate = useNavigate();
 
   const handleSearch = (e) => {
