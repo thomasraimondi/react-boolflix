@@ -22,8 +22,8 @@ export default function CardMoviesTv({ item }) {
       {/* Overlay per overview in hover */}
       <div className="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 flex flex-col w-30 p-4 transition-opacity duration-300 text-sm text-gray-200 z-10">
         <h2 className="text-white text-sm font-bold break-words whitespace-normal">{title}</h2>
-        <span className="text-white">Overview:</span>
-        {/* <span className="text-white whitespace-normal grow">{overview.length > 50 ? overview.slice(0, 50) + "..." : overview}</span> */}
+        {/* <span className="text-white">Overview:</span>
+        <span className="text-white whitespace-normal grow">{overview.length > 50 ? overview.slice(0, 50) + "..." : overview}</span> */}
         <div className="flex items-center gap-2 mt-1">
           <span className="flex">
             {Array.from({ length: Math.round(item.vote_average / 2) }, (_, i) => (
@@ -37,8 +37,8 @@ export default function CardMoviesTv({ item }) {
               </span>
             ))}
           </span>
-          <span className="text-sm font-semibold ml-1">{vote}</span>
         </div>
+        <span className="text-sm font-semibold ml-1">{vote}</span>
       </div>
     </Link>
   );
