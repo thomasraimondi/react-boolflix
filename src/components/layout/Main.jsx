@@ -5,23 +5,22 @@ import ListCard from "../ListCard";
 
 export default function Main() {
   const navigate = useNavigate();
-  const { topRatesMovies, fetchTopRatesMovies, fetchTopRatesTv, topRatesTv, search, setSearch } = useData();
+  const { topRatesMovies, topRatesTv, query, setQuery, homeData } = useData();
   const [pageMovies, setPageMovies] = useState(1);
   const [pageTv, setPageTv] = useState(1);
 
   useEffect(() => {
-    setSearch("");
+    setQuery("");
   }, []);
 
   useEffect(() => {
-    if (search.length > 2) {
+    if (query.length > 2) {
       navigate("/search");
     }
-  }, [search]);
+  }, [query]);
 
   useEffect(() => {
-    fetchTopRatesMovies(pageMovies);
-    fetchTopRatesTv(pageTv);
+    homeData(pageMovies, pageTv);
   }, [pageMovies, pageTv]);
 
   return (
