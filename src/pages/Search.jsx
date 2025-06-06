@@ -32,10 +32,23 @@ export default function Search() {
     <>
       <div className="flex flex-col gap-4 bg-gray-900 grow">
         <div className="container mx-auto w-full py-5">
-          <span className="text-2xl font-bold p-2 text-white"> Film Trovati</span>
-          <ListCard searchedData={searchedDataMovies} page={pageMoviesSearch} setPage={setPageMoviesSearch} />
-          <span className="text-2xl font-bold p-2 text-white"> Serie Tv Trovate</span>
-          <ListCard searchedData={searchedDataTv} page={pageTvSearch} setPage={setPageTvSearch} />
+          {searchedDataMovies.length > 0 && (
+            <>
+              <span className="text-2xl font-bold p-2 text-white"> Film Trovati</span>
+              <ListCard searchedData={searchedDataMovies} page={pageMoviesSearch} setPage={setPageMoviesSearch} />
+            </>
+          )}
+          {searchedDataTv.length > 0 && (
+            <>
+              <span className="text-2xl font-bold p-2 text-white"> Serie Tv Trovate</span>
+              <ListCard searchedData={searchedDataTv} page={pageTvSearch} setPage={setPageTvSearch} />
+            </>
+          )}
+          {searchedDataMovies.length === 0 && searchedDataTv.length === 0 && (
+            <div className="flex justify-center items-center h-full">
+              <span className="text-2xl font-bold p-2 text-white"> Nessun risultato trovato</span>
+            </div>
+          )}
         </div>
       </div>
     </>

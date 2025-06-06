@@ -54,13 +54,9 @@ export default function ListCard({ searchedData, page, setPage }) {
         onMouseLeave={stopAutoScroll}
         onMouseMove={updateDirection}
       >
-        {searchedData.length > 0 ? (
-          searchedData.map((item) => <CardMoviesTv key={item.id} item={item} />)
-        ) : (
-          <div className="flex justify-center items-center h-full">
-            <span className="text-white text-2xl font-bold">Nessun risultato trovato</span>
-          </div>
-        )}
+        {searchedData.map((item) => (
+          <CardMoviesTv key={item.id} item={item} />
+        ))}
       </div>
       <div className="flex gap-2 py-5">
         <button
