@@ -5,28 +5,37 @@ import ListCard from "../components/ListCard";
 
 export default function Search() {
   const navigate = useNavigate();
-  const { search, fetchSearchedMovie, fetchSearchedTv, searchedMovies, searchedTv } = useData();
+  const { query, searchData, searchedDataMovies, searchedDataTv, genersSelected, searchGenersData, countSearch, setCountSearch } = useData();
   const [pageMoviesSearch, setPageMoviesSearch] = useState(1);
   const [pageTvSearch, setPageTvSearch] = useState(1);
 
   useEffect(() => {
-    if (search.length > 2) {
-      fetchSearchedMovie(search, pageMoviesSearch);
-      fetchSearchedTv(search, pageTvSearch);
-    }
-    if (search.length < 1) {
+    setCountSearch(countSearch + 1);
+    console.log(countSearch);
+  }, []);
+
+  useEffect(() => {
+    console.log(genersSelected);
+  }, [genersSelected]);
+
+  useEffect(() => {
+    if (query.length > 2) {
+      searchData(query, pageMoviesSearch, pageTvSearch);
+    } else if (genersSelected.length > 0) {
+      searchGenersData(genersSelected, pageMoviesSearch, pageTvSearch);
+    } else {
       navigate("/");
     }
-  }, [pageMoviesSearch, pageTvSearch, search]);
+  }, [pageMoviesSearch, pageTvSearch, query, genersSelected]);
 
   return (
     <>
       <div className="flex flex-col gap-4 bg-gray-900 grow">
         <div className="container mx-auto w-full py-5">
           <span className="text-2xl font-bold p-2 text-white"> Film Trovati</span>
-          <ListCard searchedData={searchedMovies} page={pageMoviesSearch} setPage={setPageMoviesSearch} />
+          <ListCard searchedData={searchedDataMovies} page={pageMoviesSearch} setPage={setPageMoviesSearch} />
           <span className="text-2xl font-bold p-2 text-white"> Serie Tv Trovate</span>
-          <ListCard searchedData={searchedTv} page={pageTvSearch} setPage={setPageTvSearch} />
+          <ListCard searchedData={searchedDataTv} page={pageTvSearch} setPage={setPageTvSearch} />
         </div>
       </div>
     </>
